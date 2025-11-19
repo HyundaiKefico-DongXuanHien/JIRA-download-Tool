@@ -364,6 +364,19 @@ def login_download_logout(ticket_code, username, password):
         pyautogui.press("enter")
         time.sleep(5)
         #---------------------------------------------------------------------------------------------
+        #---------------------WAIT DOWNLOAD DONE-------------------------------------------
+        wait_time = 5  # second between check
+        max_wait = 300  # max time to wait (second)
+        # Wait until there is no more file .crdownload
+        waited = 0
+        while any(f.endswith(".crdownload") for f in os.listdir(download_folder)):
+            log_status("⏳ Waiting for downloads to complete...")
+            time.sleep(wait_time)
+            waited += wait_time
+            if waited >= max_wait:
+                log_status("⚠️ Timeout waiting for downloads to finish.")
+                return
+        #---------------------------------------------------------------------------------------------
         #---------------------LOG OUT-------------------------------------------
         # Log out
         user_button = wait.until(EC.element_to_be_clickable((By.ID, "user-options")))
