@@ -576,6 +576,8 @@ def manual_loop():
                             destination_folder = r"Y:/02. Normal/01. EMS/_Test_Request"
                         elif (destination_key.upper() == "BSW") and (project_name == "ICCU"):
                             destination_folder = r"Z:/ICCU"
+                        elif (destination_key.upper() == "BSW") and (project_name == "BLANK"):
+                            destination_folder = r"Z:/SCU"
                         else:
                             log_status(f"⚠️ Can't detect destination folder from: {destination_key}")
                             os.remove(os.path.join(auto_folder_path, file_name))
@@ -635,6 +637,8 @@ def auto_loop():
                             destination_folder = r"Y:/02. Normal/01. EMS/_Test_Request"
                         elif (destination_key.upper() == "BSW") and (project_name == "ICCU"):
                             destination_folder = r"Z:/ICCU"
+                        elif (destination_key.upper() == "BSW") and (project_name == "BLANK"):
+                            destination_folder = r"Z:/SCU"
                         else:
                             log_status(f"⚠️ Can't detect destination folder from: {destination_key}")
                             os.remove(os.path.join(auto_folder_path, file_name))
